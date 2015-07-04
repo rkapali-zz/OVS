@@ -1,0 +1,19 @@
+# This file was composed for Debian systems from the original one
+# provided now under /usr/share/doc/fail2ban/examples/jail.conf
+# for additional examples.
+
+[mysql]
+username = root
+password = 
+hostname = localhost
+port = 3306
+databases = [list of databases to backup]
+
+[backup]
+rootfolder = [root backup folder]
+retention.hourly = 24
+retention.daily = 7
+retention.weekly = 4
+retention.monthly = 10
+
+

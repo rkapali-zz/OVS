@@ -1,0 +1,4 @@
+DIRECTORY="/var/ossec"
+VERSION="v2.8"
+DATE="Fri Oct 17 09:24:17 UTC 2014"
+TYPE="agent"
