@@ -40,7 +40,7 @@ if os.path.exists("templates/serverAuditor.conf"):
 
     file_exist = "server_auditor.conf file exist. yee!!!"
     print file_exist
-    print "Generating Report in .txt Format"
+    print "Generating Report in .html and .pdf Format"
     conf = load_config('templates/serverAuditor.conf')
     txt_report.create_txt_file()
 

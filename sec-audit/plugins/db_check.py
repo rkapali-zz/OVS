@@ -88,10 +88,10 @@ def run_db_checker():
 	portQueryCount = portQueryResult[0][1]
 	if portQueryCount!="3306" :
 		cnt_ok=cnt_ok+1
-		print "%s<b>Default Port</b> Is <b>Closed<b>. %s %s"%(css.okStart,css.ok,css.okEnd)
+		print "%sDefault Port Is Closed. %s %s"%(css.okStart,css.ok,css.okEnd)
 	else:
 		cnt_warning = 0
-		print "%s<b>Default Port<b> Is Open :  <b>%s</b> %s %s"%(css.wrStart,portQueryCount,css.warning,css.wrEnd)
+		print "%sDefault Port Is Open :  %s %s %s"%(css.wrStart,portQueryCount,css.warning,css.wrEnd)
 		print css.portRecom
 		cnt_warning=cnt_warning+1
 

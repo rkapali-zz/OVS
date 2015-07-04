@@ -1,4 +1,3 @@
-
 import os
 import subprocess
 import default_values
@@ -6,6 +5,21 @@ from conf_loader import ossec_init
 from third_party import xmltodict
 
 from conf_loader.server_auditor_conf import conf
+
+# variables used for HTML
+ok = default_values.OK
+warning = default_values.WARNING
+error = default_values.ERROR
+error = default_values.ERROR 
+okstart = default_values.OKSTART 
+okend = default_values.OKEND 
+wrstart = default_values.WRSTART 
+wrend = default_values.WREND 
+erstart = default_values.ERSTART 
+erend = default_values.EREND 
+rastart = default_values.RASTART
+raend = default_values.RAEND 
+br = default_values.BR
 
 #conf = serverAuditor_confLoader.load_config('serverAuditor.conf')
 
@@ -19,8 +33,10 @@ ossec_mail_alert_id = conf.get("ossec-ids.ossec_mail_alert_id")
 ossec_central_server_ip = conf.get("ossec-ids.ossec_central_server_ip")
 ## end of ossec standards
 
-ok = " .......................................[OK]"
-warning = " .......................................[WARNING]"
+# ok = " .......................................[OK]"
+# warning = " .......................................[WARNING]"
+# error = " .......................................[NOT INSTALLED]"
+
 #ossec_init_conf = "test_ossec-init.txt"
 
 # loading the ids_confLoader and getting the ids_type and ids_version from the /etc/ossec-init.conf
@@ -49,7 +65,7 @@ def check_ids_directory():
 
 #### Checking system for presence of OSSEC HIDS and its state
 def check_hids():
-    print ("Checking system for presence of OSSEC HIDS and its state")
+    print ("%s Checking system for presence of OSSEC HIDS and its state%s")%(br,br)
     #ossec_folderpath = "/var/ossec"
     #ossec_conf = ids_directory + "/etc/ossec.conf"
 
@@ -73,44 +89,44 @@ def check_hids():
             #checking ossec version
             #search_ossec_version = read_ossec_init_conf_file.find(os_version)
             if check_ids_version() == default_values.OSSEC_VERSION:
-                print ("  OSSEC HIDS version is ") + check_ids_version() + "......................" + ok
+                print (" %s OSSEC HIDS version is  %s %s %s ")%(okstart,check_ids_version(),ok,okend)
             else:
-                print("  OSSEC HIDS version installed is ") + check_ids_version() + "......................" + warning
+                print(" %s OSSEC HIDS version installed is %s %s %s")%(wrstart,check_ids_version(),warning,wrend)
 
             if check_ids_type() == ossec_type_server:
-                print ("  OSSEC HIDS Type " + ossec_type_server + ok)
+                print (" %s OSSEC HIDS Type %s %s %s")%(okstart,ossec_type_server,ok,okend)
                 email_notification_status = xmltodict.parse(read_ossec_conf)['ossec_config']['global']['email_notification'] # should be yes
                 email_notification_to = xmltodict.parse(read_ossec_conf)['ossec_config']['global']['email_to']           # should be equal to ossec_mail_alert_id
                 active_response_status = xmltodict.parse(read_ossec_conf)['ossec_config']['active-response']['disabled']   # should be no
 
                     # conditioning for ossec server
                 if email_notification_status =='yes':
-                    print ("  OSSEC HIDS Email Notification is Activated") + "......................" + ok
+                    print (" %s OSSEC HIDS Email Notification is Activated %s %s")%(okstart,ok,okend)
                     if email_notification_to == ossec_mail_alert_id:
-                        print ("OSSEC HIDS Email is ") + email_notification_to + "......................" + ok
+                        print ("%sOSSEC HIDS Email is %s %s %s")%(okstart,email_notification_to,ok,okend)
                     else:
-                        print ("OSSEC HIDS Email is ") + email_notification_to + "......................" + warning
+                        print ("%sOSSEC HIDS Email is %s %s %s") %(wrstart,email_notification_to,warning,wrend)
 
                 else:
-                    print ("OSSEC HIDS Email Notification is NOT Activated") + "......................" + warning
+                    print ("%s OSSEC HIDS Email Notification is NOT Activated %s %s")%(wrstart,warning,wrend)
 
                 if active_response_status =='yes':
-                    print ("OSSEC HIDS Active Response status is ") + active_response_status + "......................" + ok
+                    print ("%sOSSEC HIDS Active Response status is %s %s %s") %(okstart,active_response_status,ok,okend)
 
                 else:
-                    print ("OSSEC HIDS Active Response status is ") + active_response_status + "......................" + warning
+                    print ("%sOSSEC HIDS Active Response status is %s %s %s") %(wrstart,active_response_status,warning,wrend)
 
             elif(check_ids_type() == ossec_type_agent):
-                    print ("  OSSEC HIDS Type ") + ossec_type_agent + ok
+                    print (" %s OSSEC HIDS Type %s %s %s") (okstart,ossec_type_agent,ok,okend)
                     ossec_server_ip = xmltodict.parse(read_ossec_conf)['ossec_config']['client']['server-ip']
 
                     # conditioning for ossec agent
                     if ossec_server_ip == ossec_central_server_ip:
-                        print (" OSSEC HIDS Central Server IP is ") + ossec_server_ip + "......................" + ok
+                        print (" %sOSSEC HIDS Central Server IP is %s %s %s") %(okstart,ossec_server_ip,ok,okend)
                     else:
-                        print (" OSSEC HIDS Central Server IP is ") + ossec_server_ip + "......................" + warning
+                        print (" %sOSSEC HIDS Central Server IP is %s %s %s") %(wrstart,ossec_server_ip,warning,wrend)
             else:
-                print ("  OSSEC HIDS Type is UNKNOWN and not according to standard ") + "......................" + warning
+                print (" %s OSSEC HIDS Type is UNKNOWN and not according to standard %s %s") %(wrstart,warning,wrend)
 
             # checking if ossec is running
             try:
@@ -124,12 +140,12 @@ def check_hids():
 
             else:
                 if filter_ossec_syscheck_output >= 0:
-                    print (" " + " OSSEC HIDS is not Running State " + warning)
+                    print (" " + " %sOSSEC HIDS is not Running State %s %s") %(wrstart,warning,wrend)
                 else:
-                    print (" OSSEC HIDS is in Running State ") + "......................" + ok
+                    print (" %sOSSEC HIDS is in Running State %s %s") %(okstart,ok,okend)
 
         else:
-            print (" Could not find OSSEC HIDS in the System ") + "......................" + warning
+            print (" %sCould not find OSSEC HIDS in the System%s %s") %(erstart,error,erend)
 
     except IOError as checkIdsError:
         print (" Error has occur in " + "checkIds()" + " " + checkIdsError.strerror)
@@ -139,4 +155,3 @@ def run_ids_checker():
 
 ## calling all functions
 #run_idsChecker()
-

@@ -1,0 +1,115 @@
+Server Grade : B
+ 
+<h3>**************Awesome name not decided TOOL's report*************************</h3> <br>
+ 
+ <b>*************** Checking OS ***************</b> <br>
+<span style="color:goldenrod">The OS found to be <b>Linux Mint 16 Petra</b> - [WARNING] </span>
+ <a href="/home/gambit/sec-audit/html/OS_Recommendation.html">Recommendation</a>
+<br><span style="color:goldenrod">The OS found to be of <b>x86_64
+</b> - [WARNING] </span>
+ <a href="/home/gambit/sec-audit/html/OS_Recommendation.html">Recommendation</a>
+ <br><b>*************** END of OS Check ***************</b> <br> <br>
+ 
+ <br><b>*************** Checking PHP modules ***************</b>
+<br> Checking for <span style="color:green">php5-curl</span> version <span style="color:green">5.3.10-1ubuntu3.6</span>
+<span style="color:red"> <b><i>php5-curl</i></b>  - [NOT INSTALLED] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+<br> Checking for <span style="color:green">php5-mcrypt</span> version <span style="color:green">5.5.9+dfsg-1ubuntu4.4</span>
+Installed version <span style="color:goldenrod"> <b>5.4.6-0ubuntu3</b> - [WARNING] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+<br> Checking for <span style="color:green">libapache2-modsecurity</span> version <span style="color:green">2.7.7-2</span>
+<span style="color:red"> <b><i>libapache2-modsecurity</i></b>  - [NOT INSTALLED] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+<br> Checking for <span style="color:green">php5-common</span> version <span style="color:green">5.5.9+dfsg-1ubuntu4.4</span>
+Installed version <span style="color:goldenrod"> <b>5.5.3+dfsg-1ubuntu2.6</b> - [WARNING] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+<br> Checking for <span style="color:green">apache2</span> version <span style="color:green">2.3.7-1ubuntu4.1</span>
+Installed version <span style="color:goldenrod"> <b>2.4.6-2ubuntu2.2</b> - [WARNING] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+<br> Checking for <span style="color:green">php5-mysql</span> version <span style="color:green">5.5.9+dfsg-1ubuntu4.4</span>
+Installed version <span style="color:goldenrod"> <b>5.5.3+dfsg-1ubuntu2.6</b> - [WARNING] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+<br> Checking for <span style="color:green">php5-gd</span> version <span style="color:green">5.5.9+dfsg-1ubuntu4.4</span>
+<span style="color:red"> <b><i>php5-gd</i></b>  - [NOT INSTALLED] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+<br> Checking for <span style="color:green">libapache2-mod-php5</span> version <span style="color:green">5.3.10-1ubuntu3.6</span>
+Installed version <span style="color:goldenrod"> <b>5.5.3+dfsg-1ubuntu2.6</b> - [WARNING] </span>
+ <a href="/home/gambit/sec-audit/html/PHP_Recommendation.html">Recommendation</a>
+ <br><b>*************** END of the PHP modules check ***************</b> <br> <br>
+ 
+ <b>*************** Checking ports ***************</b> <br>
+Skipped<br>
+ <br><b>*************** END of the Port Scanning ***************</b> <br> <br>
+ 
+ <br><b>*************** Checking IDS (OSSEC) ***************</b>
+<br> Checking system for presence of OSSEC HIDS and its state<br>
+ <span style="color:red">Could not find OSSEC HIDS in the System - [NOT INSTALLED] </span>
+ <br><b>*************** END of the IDS check ***************</b> <br> <br>
+ 
+ <br><b>*************** Checking WAF (Modsecurity) ***************</b>
+<br>checking Apache Modsecurity Firewall Settings <br>
+Reading /etc/modsecurity/modsecurity.conf <br>
+<span style="color:red">Modsecurity  - [NOT INSTALLED] </span>
+ 
+ <br><b>*************** END of the ModSecurity check ***************</b> <br> <br>
+ 
+ <br><b>*************** Checking DB (MySQL) ***************</b>
+<br><b>
+Your Database Credentials: </b><br>
+
+Host Name: localhost<br>
+
+User Name: root<br>
+
+Password: ***********<br>
+
+DB name: 
+
+<br><br>
+<span style="color:green">The Credentials are correct to connect...</span><br><br>
+<b><b>User Details:</b></b><br>
+<b>No of User:</b> 4<br><br>
+<b>Distinct Users:</b><br>
+Users[0 ]:root<br>
+Users[1 ]:debian-sys-maint<br>
+Users[2 ]:phpmyadmin<br>
+Users[3 ]:rsyslog<br>
+<br><b>DB server port :</b>
+<span style="color:goldenrod"><b>Default Port<b> Is Open :  <b>3306</b> - [WARNING] </span>
+<a href="/home/gambit/sec-audit/html/portRecom.html">Recommendation</a>
+<br><b>Users with Blank Password :</b>
+<span style="color:green">No Blank Passwords For Any User.- [OK]</span>
+<br><b>Existence of Root user :</b>
+<span style="color:goldenrod"> "root" user has not been renamed. root user allowed to access from 4 different hosts.- [WARNING] </span> 
+<a href="/home/gambit/sec-audit/html/rootUser.html">Recommendation</a>
+<br><b>Existence of Anonymous user :</b>
+<span style="color:green">No Anonymous User Exists. - [OK] </span>
+<br><b>Database Accessibility :</b>
+<span style="color:green">No User can access from ANY hosts which  is a good practice to follow - [OK]</span>
+<br><b>DB Connection Encyption :</b>
+<span style="color:goldenrod">Warning: SSL Is Disabled. - [WARNING] </span>
+<br><b>Binary log status :</b>
+<span style="color:goldenrod">Binary Logging Is Disabled. - [WARNING]</span>
+<br><b>Slow query status :</b>
+<span style="color:goldenrod">Warning: Slow Query Logging Is Disabled - [WARNING] </span>
+<br><b>Local Infile command status :</b>
+<span style="color:goldenrod">'LOAD DATA LOCAL INFILE' Is Enabled.- [WARNING]</span> 
+<h3>Final Pointers :</h3>
+Out of 4 Audit Factors: <br>
+<b>3</b> - <span style="color:green">Pass</span>. <br>
+<b>1</b> - <span style="color:goldenrod">Warnings</span>. <br>
+<b>0</b> - <span style="color:red">Errors</span>. <br>
+
+Checked All areas from audit check list. Please Take necessary actions to secure database. 
+
+
+<h3> Database Server Grade: C </h3><br>
+ <br><b>*************** END of the ModSecurity check ***************</b> <br> <br>
+ 
+<h3>**************End of Testing*************************</h3> <br>
+Loading page (1/2)
+[>                                                           ] 0%[======>                                                     ] 10%[==============================>                             ] 50%[============================================================] 100%Printing pages (2/2)                                               
+[>                                                           ] Done                                                           
+Loading page (1/2)
+[>                                                           ] 0%[======>                                                     ] 10%[==============================>                             ] 50%[============================================================] 100%Printing pages (2/2)                                               
+[>                                                           ] Done                                                           

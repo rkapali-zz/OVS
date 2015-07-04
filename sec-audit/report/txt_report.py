@@ -8,7 +8,7 @@ import sys
 now = datetime.datetime.now()
 date_stamp = now.strftime("-%Y-%m-%d-%H-%M-%S")
 filename = "audit_report_"
-f_filename = filename + date_stamp + ".txt"
+f_filename = filename + date_stamp + ".html"
 newline = "\n"
 # create new txt file
 def create_txt_file():
